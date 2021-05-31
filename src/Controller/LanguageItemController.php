@@ -58,7 +58,7 @@ class LanguageItemController extends AbstractController
     public function findItem($id) {
         $item = $this->getDoctrine()->getRepository(Items::class)->find($id);
 
-        $response = [];
+//        $response = [];
 
         if (!$item) {
             throw $this->createNotFoundException(
@@ -66,12 +66,16 @@ class LanguageItemController extends AbstractController
             );
         } else {
             return $this->json(
-                $response[] = array(
-                    'id'=>$item->getId(),
-                    'name_en'=>$item->getNameEn(),
-                    'name_fi'=>$item->getNameFi(),
-                    'img'=>$item->getImg()
-                )
+                [  'id'=>$item->getId(),
+                  'name_en'=>$item->getNameEn(),
+                   'name_fi'=>$item->getNameFi(),
+                  'img'=>$item->getImg(),]
+//                $response[] = array(
+//                    'id'=>$item->getId(),
+//                    'name_en'=>$item->getNameEn(),
+//                    'name_fi'=>$item->getNameFi(),
+//                    'img'=>$item->getImg()
+//                )
             );
         }
     }
