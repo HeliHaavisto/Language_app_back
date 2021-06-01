@@ -53,6 +53,28 @@ class LanguageItemController extends AbstractController
     }
 
     /**
+     * @Route("/items/chunks/{$number}")
+     */
+    public function getChunks($number) {
+        $items = $this->getDoctrine()->getRepository(Items::class)->findAll();
+
+        $response = [];
+
+        $chunks = array_chunk($items, 5);
+
+        foreach($chunks[$number] as $item) {
+            $response[]= array(
+                'id'=>$item->getId(),
+                'name_en'=>$item->getNameEn(),
+                'name_fi'=>$item->getNameFi(),
+                'img'=>$item->getImg()
+            );
+        }
+
+
+    }
+
+    /**
      * @Route("/items/find/{id}")
      */
     public function findItem($id) {
