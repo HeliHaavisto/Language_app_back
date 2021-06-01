@@ -60,9 +60,9 @@ class LanguageItemController extends AbstractController
 
         $response = [];
 
-        $chunks = array_chunk($items, 5);
 
-        foreach($chunks[$number] as $item) {
+
+        foreach($items as $item) {
             $response[]= array(
                 'id'=>$item->getId(),
                 'name_en'=>$item->getNameEn(),
@@ -71,7 +71,9 @@ class LanguageItemController extends AbstractController
             );
         }
 
-        return $this->json($response);
+        $chunks = array_chunk($response, 5);
+
+        return $this->json($chunks[$number]);
 
 
     }
