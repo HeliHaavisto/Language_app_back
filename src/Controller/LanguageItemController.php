@@ -71,6 +71,8 @@ class LanguageItemController extends AbstractController
             );
         }
 
+        return $this->json($response);
+
 
     }
 
