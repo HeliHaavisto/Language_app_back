@@ -53,7 +53,7 @@ class LanguageItemController extends AbstractController
     }
 
     /**
-     * @Route("/items/chunks/1")
+     * @Route("/items/chunks/{$number}")
      */
     public function getChunks() {
         $items = $this->getDoctrine()->getRepository(Items::class)->findAll();
@@ -73,7 +73,7 @@ class LanguageItemController extends AbstractController
 
         $chunks = array_chunk($response, 5);
 
-        return $this->json($chunks[1]);
+        return $this->json($chunks[$number]);
 
 
     }
