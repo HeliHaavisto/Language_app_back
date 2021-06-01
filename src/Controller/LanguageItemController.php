@@ -81,7 +81,7 @@ class LanguageItemController extends AbstractController
     /**
      * @Route("/items/chunks/1")
      */
-    public function getChunks() {
+    public function getChunks1() {
         $items = $this->getDoctrine()->getRepository(Items::class)->findAll();
 
         $response = [];
